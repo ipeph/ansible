@@ -27,7 +27,7 @@
      when: ansible_network_os == 'nxos'
 
    - name: backup wlc
-     community.network.aireos_config:
+     aireos_config:
       backup: yes
       backup_options:
         dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
