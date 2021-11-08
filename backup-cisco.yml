@@ -1,6 +1,6 @@
 ---
 - name: command
-  hosts: cisco
+  hosts: ios
   gather_facts: false
 #  connection: network_cli
 #  user: febry
