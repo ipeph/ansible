@@ -1,6 +1,6 @@
 ---
 - name: command
-  hosts: ios
+  hosts: cisco
   gather_facts: false
 #  connection: network_cli
 #  user: febry
@@ -14,6 +14,22 @@
      ios_config:
        backup: yes
        backup_options:
-         dir_path: /var/awx/{{ year }}/{{ month }}/{{ date }}
+         dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
      register: output
      when: ansible_network_os == 'ios'
+
+   - name: backup nexus
+     nxos_config:
+      backup: yes
+      backup_options:
+        dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+     register: output
+     when: ansible_network_os == 'nxos'
+
+   - name: backup wlc
+     community.network.aireos_config:
+      backup: yes
+      backup_options:
+        dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+     register: output
+     when: ansible_network_os == 'aireos'
