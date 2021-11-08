@@ -16,4 +16,4 @@
        backup_options:
          dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
      register: output
-     when: ansible_network_os == 'cisco.ios.ios'
+     when: ansible_network_os == 'ios'
