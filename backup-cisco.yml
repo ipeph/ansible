@@ -14,6 +14,6 @@
      ios_config:
        backup: yes
        backup_options:
-         dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+         dir_path: /home/febry/{{ year }}/{{ month }}/{{ date }}
      register: output
      when: ansible_network_os == 'ios'
