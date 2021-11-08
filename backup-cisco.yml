@@ -1,0 +1,35 @@
+---
+- name: command
+  hosts: cisco
+  gather_facts: false
+#  connection: network_cli
+#  user: febry
+  vars:
+    year: "{{ lookup('pipe', 'date +%Y') }}"
+    month: "{{ lookup('pipe', 'date +%m') }}"
+    date: "{{ lookup('pipe', 'date +%d') }}"
+
+  tasks:
+   - name: backup switch
+     ios_config:
+       backup: yes
+       backup_options:
+         dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+     register: output
+     when: ansible_network_os == 'cisco.ios.ios'
+
+   - name: backup nexus
+     nxos_config:
+      backup: yes
+      backup_options:
+        dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+     register: output
+     when: ansible_network_os == 'cisco.nxos.nxos'
+
+   - name: backup wlc
+     community.network.aireos_config:
+      backup: yes
+      backup_options:
+        dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+     register: output
+     when: ansible_network_os == 'community.network.aireos'
