@@ -14,7 +14,7 @@
      ios_config:
        backup: yes
        backup_options:
-         dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+         dir_path: /var/awx/{{ year }}/{{ month }}/{{ date }}
      register: output
      when: ansible_network_os == 'ios'
 
@@ -22,7 +22,7 @@
      nxos_config:
       backup: yes
       backup_options:
-        dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+        dir_path: /var/awx/ansible-test/{{ year }}/{{ month }}/{{ date }}
      register: output
      when: ansible_network_os == 'nxos'
 
@@ -30,6 +30,6 @@
      aireos_config:
       backup: yes
       backup_options:
-        dir_path: /home/febry/ansible-test/{{ year }}/{{ month }}/{{ date }}
+        dir_path: /var/awx/ansible-test/{{ year }}/{{ month }}/{{ date }}
      register: output
      when: ansible_network_os == 'aireos'
