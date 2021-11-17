@@ -1,1 +1,2 @@
-# Ansible repository for Ansible-Tower by Febry Citra Prawira Negara
+# Ansible repository for Ansible-Tower
+This repositoy for testing purpose only
